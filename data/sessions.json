@@ -1,0 +1,28 @@
+{
+  "oc_3b8e056c06e8327e5c57fc4f43164633": {
+    "chat_id": "oc_3b8e056c06e8327e5c57fc4f43164633",
+    "cursor_mode": false,
+    "workspace": "/home/uisee/workspace/test/feishu_cursor",
+    "agent_chat_id": "609ce851-4908-405b-ae0f-40fb579f5a6a",
+    "mcp_allowed": false,
+    "mcp_workspace": null,
+    "chats": [
+      {
+        "chat_id": "e96621cb-e1b6-486f-a9e4-69b55e090e2b",
+        "title": "当前文件夹下有哪些目录",
+        "workspace": "/home/uisee/workspace/test/feishu_cursor",
+        "created_at": "2026-10-22 02:17",
+        "updated_at": "2026-10-23 03:03",
+        "latest": "去宿主机查看当前工作目录的git分支"
+      },
+      {
+        "chat_id": "609ce851-4908-405b-ae0f-40fb579f5a6a",
+        "title": "git status 看一下当前代码空间状态",
+        "latest": "对当前代码进行提交，提交日志为 update project ,分支就是主分支",
+        "workspace": "/home/uisee/workspace/test/feishu_cursor",
+        "created_at": "2026-10-23 03:03",
+        "updated_at": "2026-10-23 06:00"
+      }
+    ]
+  }
+}

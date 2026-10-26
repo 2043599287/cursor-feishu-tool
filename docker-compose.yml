@@ -1,0 +1,29 @@
+services:
+  feishu-cursor:
+    build: .
+    container_name: feishu_cursor
+    user: "1000:1000"
+    # 宿主机 docker 组，才能访问挂载进来的 docker.sock
+    group_add:
+      - "998"
+    # 需求：共享主机网络（飞书长连接无需公网 IP）
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      CONTAINER_WORKSPACE: /workspace
+      HOST_WORKSPACE: /home/uisee/workspace
+      DATA_DIR: /app/data
+      SECRET_CONFIG_FILE: /app/secret_config.yaml
+      NO_OPEN_BROWSER: "1"
+    volumes:
+      # 需求：挂载主机 workspace。同时挂到原路径，cursor-agent 按本机路径访问，而不是只看到 /workspace
+      - /home/uisee/workspace:/home/uisee/workspace
+      - /home/uisee/workspace:/workspace
+      # 调用本机已安装的 Cursor Agent CLI（含自带 node）
+      - /home/uisee/.local/share/cursor-agent:/home/uisee/.local/share/cursor-agent:ro
+      - /home/uisee/.cursor:/home/uisee/.cursor
+      - ./data:/app/data
+      - ./secret_config.yaml:/app/secret_config.yaml:ro
+      # 让容器内的 cursor-agent 能 docker exec 进宿主机上的编译容器（如 semt_build）
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker:ro

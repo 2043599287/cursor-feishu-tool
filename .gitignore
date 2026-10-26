@@ -1,0 +1,5 @@
+# 本地凭证，禁止提交（使用 secret_config.yaml.example 作为模板）
+secret_config.yaml
+
+__pycache__/
+*.pyc

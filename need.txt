@@ -1,0 +1,22 @@
+一、需求
+实现一个使用飞书机器人，即可调用本地cursor agent 的程序
+二、方法
+1、资源：飞书机器人id在robot_id.txt
+2、飞书输入框命令：
+    /cursor  -> 进入cursor智能体对话模式，使用 Auto Intelligence模式
+    /cursor_used -> 返回当前cursor已用了多少额度
+    /exit    -> 退出 cursor智能体对话模式
+    /bind {工作文件夹} -> 绑定工作文件夹
+    /query_current_workspace -> 查询当前的工作文件夹
+    /unbind {工作文件夹} -> 解绑当前工作文件夹
+    /new_chat ->  新建对话
+    /query_chat  -> 查询所有对话
+    /enter_chat {chatid} -> 跳转到某一个对话
+    /query_list -> 查询当前文件夹下的文件有哪些(均绝对路径)，未绑定情况下列出/home/uisee/workspace的
+    /allow_mcp -> 允许使用mcp服务对当前绑定的工作文件夹进行代码修改的提交，或者建立代码仓库或分支
+    /forbid_mcp -> 禁用mcp服务
+
+3、使用飞书对话进入cursor对话模式后，调用本地cursor智能体，即可实现使用cursor IDE一样的对话和任务效果
+4、/bind 文件夹后，可以针对某一个文件夹下的工程进行进一步开发
+5、返回内容：将cursor的结果返回到飞书，由飞书机器人发到对话框
+6、使用docker部署，挂载/home/uisee/workspace，到容器/workspace，镜像使用ubuntu20.04, 同时设置容器用户为uisee，避免挂载后修改的文件会是root权限，网路共享主机网络
